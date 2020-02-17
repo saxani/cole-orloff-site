@@ -34,7 +34,7 @@ build/Release
 
 # Dependency directories
 node_modules/
-!gatsby-source-strapi
+!node_modules/gatsby-source-strapi
 
 jspm_packages/
 
