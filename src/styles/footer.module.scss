@@ -1,0 +1,32 @@
+//Just for footer
+@import './helpers/colors';
+
+
+.buttonWrapper {
+    display: flex;
+}
+
+.button {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: $content-grey;
+        cursor: pointer;
+    }
+}
+
+.button:hover .arrow {
+    color: $beige-background;
+}
+
+.arrow {
+    font-size: 36px;
+    font-weight: 100;
+    color: $content-grey;
+    transition: 0.3s;
+}

@@ -1,0 +1,32 @@
+//Only styles relating to the menu
+@import './helpers/colors';
+
+.menu {
+    height: 100%;
+    margin-left: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+    overflow-y: hidden;
+}
+
+.oneSixth {
+    height: 16.6666%;
+    margin-bottom: 0;
+
+}
+
+.link {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: $content-grey;
+    transition: 0.3s;
+
+    &:hover {
+        color: $beige-background;
+        background-color: $content-grey;
+    }
+}

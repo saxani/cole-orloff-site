@@ -1,0 +1,65 @@
+//Overall layout styles
+@import './helpers/colors';
+
+.container {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: $beige-background;
+    font-family: serif;
+    overflow: hidden;
+}
+
+.borderBottom {
+    border-bottom: 1px solid;
+    border-color: $border-grey;
+}
+
+.borderRight {
+    border-right: 1px solid;
+    border-color: $border-grey;
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.width8 {
+    width: 100%;
+}
+
+.width4 {
+    width: 50%;
+}
+
+.width2 {
+    width: 25%;
+}
+
+.width1 {
+    width: 12.5%;
+}
+
+.width6 {
+    width: 75%;
+}
+
+.height1 {
+    height: 12.5%;
+}
+
+.height6 {
+    height: 75%;
+}
+
+.contentBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

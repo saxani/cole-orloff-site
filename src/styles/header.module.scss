@@ -1,0 +1,31 @@
+@import './helpers/colors';
+
+.headlineBox {
+    transition: 0.3s;
+
+    &:hover {
+        background-color: $content-grey;
+    }
+}
+
+.headlineBox:hover .title {
+    color: $beige-background;
+}
+
+.link {
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 0;
+    font-family: serif;
+    color: $content-grey;
+    text-decoration: none;
+    transition: 0.3s;
+}
