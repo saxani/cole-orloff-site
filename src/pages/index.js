@@ -9,13 +9,38 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.data = props.data;
+    this.galleryImages = [];
+
+    this.state = { 
+      imagesLoaded : false
+    }
+  }
+
+  componentDidMount() {
+
+    this.data.cms.edges.map(project => {
+      let images = project.node.image;
+
+      for (let i = 0; i < images.length; i++) {
+        if (images[i].localFile.extension === "jpg" || images[i].localFile.extension === "png" || images[i].localFile.extension === "jpeg") {
+            this.galleryImages.push(images[i]);
+            break;
+        }
+      }
+    });
+
+    this.setState({
+      imagesLoaded: true
+    });
+
   }
 
   render() {
     return (
       <Layout>
-        <Menu data={this.data}/>
-        <Gallery data={this.data}/>
+        <Menu data={this.data.cms}/>
+        {this.state.imagesLoaded && <Gallery data={this.galleryImages} arrowLeft={this.data.arrowLeft} arrowRight={this.data.arrowRight}/>}
+
       </Layout>
     )
   }
@@ -24,8 +49,8 @@ class Index extends Component {
 export default Index;
 
 export const pageQuery = graphql`
-  query IndexQuery {
-    allStrapiProject {
+  query {
+    cms: allStrapiProject {
       edges {
         node {
           id
@@ -35,8 +60,8 @@ export const pageQuery = graphql`
               extension
               publicURL
               childImageSharp {
-                fixed(width: 200) {
-                  ...GatsbyImageSharpFixed
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -46,8 +71,25 @@ export const pageQuery = graphql`
         }
       }
     }
+    arrowLeft: file(relativePath: {eq: "arrows-gallery/Left-Arrow.png"}) {
+      id
+      relativePath
+      childImageSharp {
+        fixed(width: 35) {
+          originalName
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    arrowRight: file(relativePath: {eq: "arrows-gallery/Right-Arrow.png"}) {
+      id
+      relativePath
+      childImageSharp {
+        fixed(width: 35) {
+          originalName
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
   }
 `
-// {this.data.allStrapiProject.edges.map(document => (
-//   <Project data= {document} key= {document.id}/>
-// ))}

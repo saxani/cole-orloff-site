@@ -1,61 +1,47 @@
 import React, { Component } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import Slider from 'react-animated-slider';
+import 'react-animated-slider/build/horizontal.css';
 import Img from 'gatsby-image';
 
 import galleryStyles from '../styles/gallery.module.scss';
 import layoutStyles from '../styles/layout.module.scss';
+import '../styles/overrides.scss';
 
-function RenderImage(props) {    
-    return <Img fixed={props.localFile.childImageSharp.fixed} alt="" />
-}
 
 class Gallery extends Component {
     constructor(props) {
-      super(props);
-      this.data = props.data;
-      this.children = [];
+        super(props);
+        this.data = props.data;
 
-      this.state = {
-          images : []
-      }
-
+        this.galleryRef = React.createRef();
+        
     }
 
-    componentDidMount(){
-        this.data.allStrapiProject.edges.map(project => {
+    componentDidMount() {
 
-            let images = project.node.image;
+        const node = this.galleryRef.current;
+        console.log(node.childNodes);
 
-            for (let i = 0; i < images.length; i++) {
-                if (images[i].localFile.extension === "jpg" || images[i].localFile.extension === "png" || images[i].localFile.extension === "jpeg") {
-                    this.children.push(React.createElement(RenderImage, images[i], null));
-                    break;
-                }
-            }
-        });
-
-        this.setState({
-            images: this.children
-        })
-
-        setTimeout(function(){
-            console.log(this.state.images);
-        }.bind(this), 3000);
- 
     }
   
     render() {
-       
+
         return (
-            <div className={`${layoutStyles.width6} ${layoutStyles.height6} ${layoutStyles.borderBottom}`}>
-    
-                    {this.state.images}
-          
-                
+            <div className={`${layoutStyles.width6} ${layoutStyles.height6} ${layoutStyles.borderBottom} ${galleryStyles.outerGalleryWrapper}`}>
+                <div className={galleryStyles.innerGalleryWrapper}>
+                    <Slider autoplay='1000' touchDisabled='true' ref={this.galleryRef}>
+                        {this.data.map(image =>  
+
+                            <Img key={image.id} fluid={image.localFile.childImageSharp.fluid} className={galleryStyles.galleryImage} alt=""/>
+
+                        )}
+                    </Slider>
+                </div>
             </div>
         )
     }
   }
   
   export default Gallery;
+
+

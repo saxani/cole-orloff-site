@@ -44,7 +44,7 @@ class Header extends Component {
           </div>
         </div>
         <div className={`${layoutStyles.width4} ${layoutStyles.contentBox}`}>
-          {this.props.siteContact}
+          <span className={headerStyles.contact}>{this.props.siteContact}</span>
         </div>
       </header>
     )

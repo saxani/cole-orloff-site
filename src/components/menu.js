@@ -15,7 +15,7 @@ class Menu extends Component {
       return (
         <div className={`${layoutStyles.width2} ${layoutStyles.height6}`}>
             <ul className={`${menuStyles.menu}`}>
-                {this.data.allStrapiProject.edges.map(document => (
+                {this.data.edges.map(document => (
                     <li key={document.node.id} className={`${menuStyles.oneSixth} ${layoutStyles.borderRight} ${layoutStyles.borderBottom}`}>
                         <Link to="/" className={menuStyles.link}>
                             {document.node.title}

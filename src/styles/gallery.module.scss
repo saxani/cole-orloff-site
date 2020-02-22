@@ -1,0 +1,24 @@
+
+.outerGalleryWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerGalleryWrapper {
+    height: 90%;
+    width: 90%;
+
+}
+
+.galleryImage {
+    height: 100%;
+    width: 100%;
+    position: absolute !important;
+    top: 0 !important;
+
+    img {
+        object-fit: contain !important;
+    }
+    
+}

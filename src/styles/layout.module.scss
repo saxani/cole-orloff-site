@@ -1,5 +1,6 @@
 //Overall layout styles
 @import './helpers/colors';
+@import './helpers/typography';
 
 .container {
     margin: 0;
@@ -9,7 +10,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color: $beige-background;
-    font-family: serif;
+    font-family: 'IBM Plex Serif';
     overflow: hidden;
 }
 
@@ -61,4 +62,15 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+
+
+
+////Fonts
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Krona One';
+}
+
+a{
+    font-family: 'Krona One';
 }
