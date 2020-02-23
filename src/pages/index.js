@@ -11,6 +11,7 @@ class Index extends Component {
     this.data = props.data;
     this.galleryImages = [];
 
+
     this.state = { 
       imagesLoaded : false
     }
