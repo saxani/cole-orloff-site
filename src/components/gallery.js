@@ -20,7 +20,6 @@ class Gallery extends Component {
     componentDidMount() {
 
         const node = this.galleryRef.current;
-        console.log(node.childNodes);
 
     }
   
@@ -40,8 +39,6 @@ class Gallery extends Component {
             </div>
         )
     }
-  }
+}
   
-  export default Gallery;
-
-
+export default Gallery;

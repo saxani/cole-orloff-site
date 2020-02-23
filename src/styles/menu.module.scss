@@ -12,7 +12,11 @@
 .oneSixth {
     height: 16.6666%;
     margin-bottom: 0;
+}
 
+.fiveSixth {
+    height: 83.3333%;
+    overflow: scroll;
 }
 
 .link {
@@ -29,4 +33,8 @@
         color: $beige-background;
         background-color: $content-grey;
     }
+}
+
+.content{
+    padding: 15px;
 }

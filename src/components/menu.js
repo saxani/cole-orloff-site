@@ -17,7 +17,7 @@ class Menu extends Component {
             <ul className={`${menuStyles.menu}`}>
                 {this.data.edges.map(document => (
                     <li key={document.node.id} className={`${menuStyles.oneSixth} ${layoutStyles.borderRight} ${layoutStyles.borderBottom}`}>
-                        <Link to="/" className={menuStyles.link}>
+                        <Link to={document.node.fields.slug} className={menuStyles.link}>
                             {document.node.title}
                         </Link>
                     </li>

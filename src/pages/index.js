@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import Project from '../components/project';
 import Menu from '../components/menu';
 import Gallery from '../components/gallery';
 
@@ -69,6 +68,9 @@ export const pageQuery = graphql`
           }
           title
           content
+          fields {
+            slug
+          }
         }
       }
     }
