@@ -72,9 +72,19 @@ export const pageQuery = graphql`
             slug
           }
         }
+        previous {
+          fields {
+            slug
+          }
+        }
+        next {
+          fields {
+            slug
+          }
+        }
       }
     }
-    arrowLeft: file(relativePath: {eq: "arrows-gallery/Left-Arrow.png"}) {
+    arrowLeft: file(relativePath: {eq: "arrow-gallery/Left-Arrow.png"}) {
       id
       relativePath
       childImageSharp {
@@ -84,7 +94,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    arrowRight: file(relativePath: {eq: "arrows-gallery/Right-Arrow.png"}) {
+    arrowRight: file(relativePath: {eq: "arrow-gallery/Right-Arrow.png"}) {
       id
       relativePath
       childImageSharp {

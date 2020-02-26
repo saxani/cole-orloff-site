@@ -3,12 +3,13 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SideContent from '../components/sideContent';
-import Gallery from '../components/gallery';
+import Gallery from '../components/gallery2';
 
 
 class Project extends Component {
     constructor(props) {
         super(props);
+
         this.data = props.data.strapiProject;
 
         this.galleryImages = [];
@@ -21,10 +22,8 @@ class Project extends Component {
     componentDidMount() {
 
         this.data.image.map(image => {
-              if (image.localFile.extension === "jpg" || image.localFile.extension === "png" || image.localFile.extension === "jpeg") {
-                  this.galleryImages.push(image);
-              }
-          });
+            this.galleryImages.push(image);
+        });
       
         this.setState({
             imagesLoaded: true

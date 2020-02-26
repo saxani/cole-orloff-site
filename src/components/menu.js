@@ -10,17 +10,19 @@ class Menu extends Component {
 
       this.data = props.data;
     }
+
+   
   
     render() {
       return (
         <div className={`${layoutStyles.width2} ${layoutStyles.height6}`}>
             <ul className={`${menuStyles.menu}`}>
                 {this.data.edges.map(document => (
-                    <li key={document.node.id} className={`${menuStyles.oneSixth} ${layoutStyles.borderRight} ${layoutStyles.borderBottom}`}>
-                        <Link to={document.node.fields.slug} className={menuStyles.link}>
-                            {document.node.title}
-                        </Link>
-                    </li>
+                  <li key={document.node.id} className={`${menuStyles.oneSixth} ${layoutStyles.borderRight} ${layoutStyles.borderBottom}`}>
+                   <Link to={document.node.fields.slug} className={menuStyles.link}>
+                       {document.node.title}
+                   </Link>
+                 </li>
                 ))}
             </ul>
         </div>

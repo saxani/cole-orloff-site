@@ -6,19 +6,31 @@
 }
 
 .innerGalleryWrapper {
-    height: 90%;
-    width: 90%;
-
+    height: 85%;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .galleryImage {
     height: 100%;
     width: 100%;
+
     position: absolute !important;
-    top: 0 !important;
 
     img {
         object-fit: contain !important;
     }
     
+}
+
+.mediaElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video {
+    width: 100%;
 }
