@@ -11,13 +11,11 @@ import '../styles/overrides.scss';
 class Gallery extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
+
         this.data = props.data;
         this.arrowLeft = props.arrowLeft;
         this.arrowRight = props.arrowRight;
         this.galleryRef = React.createRef();
-        this.nextButton = this.nextButton.bind(this);
-        console.log(this.arrowRight);
     }
 
     componentDidMount() {
