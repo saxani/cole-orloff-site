@@ -3,74 +3,95 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SideContent from '../components/sideContent';
-import Gallery from '../components/gallery2';
+import Gallery from '../components/gallery';
 
 
 class Project extends Component {
     constructor(props) {
         super(props);
-
         this.data = props.data.project;
         this.allProjects = props.data.allProjects;
-
-        this.next = null;
-        this.previous = null;
-
         this.galleryImages = [];
     
         this.state = { 
-          imagesLoaded : false
+          loaded : false,
+          next: null,
+          previous: null,
+          location: props.location
         }
 
         this.projectSorter = this.projectSorter.bind(this);
+        this.sortImages = this.sortImages.bind(this);
+        this.pushImages = this.pushImages.bind(this);
       }
     
-    componentDidMount() {
+    async componentDidMount() {
 
-        this.data.image.map(image => {
-            this.galleryImages.push(image);
-        });
-      
+
+        await this.sortImages();
+        await this.projectSorter();
+
         this.setState({
-            imagesLoaded: true
+            loaded: true
         });
-
-        this.projectSorter();
-    }
-
-    projectSorter(){
-        const lastProject = this.allProjects.edges.length - 1;
-        let i = 0;
-
-        while (this.next === null) {
-            if(this.allProjects.edges[i].node.fields.slug === this.data.fields.slug) {
-                if(i === 0) {
-                    this.next = this.allProjects.edges[i+1].node.fields.slug;
-                    this.previous = this.allProjects.edges[lastProject].node.fields.slug;
-                } else if (i === lastProject) {
-                    this.next = this.allProjects.edges[0].node.fields.slug;
-                    this.previous = this.allProjects.edges[i-1].node.fields.slug;
-                } else {
-                    this.next = this.allProjects.edges[i+1].node.fields.slug;
-                    this.previous = this.allProjects.edges[i-1].node.fields.slug;
-                }
-            } else {
-                i++;
-            }
-        }
 
         
     }
 
+    async sortImages(){
+        Promise.all(this.data.image.map(image => this.pushImages(image)));
+    }
+
+    async pushImages(image){
+        this.galleryImages.push(image);
+        return Promise.resolve('ok');
+    }
+
+    async projectSorter(){
+        const lastProject = this.allProjects.edges.length - 1;
+        let i = 0;
+
+        while (this.state.next === null) {
+            if(this.allProjects.edges[i].node.fields.slug === this.data.fields.slug) {
+                if(i === 0) {
+                    this.setState({
+                        next : this.allProjects.edges[i+1].node.fields.slug,
+                        previous : this.allProjects.edges[lastProject].node.fields.slug
+                    });
+                } else if (i === lastProject) {
+                    this.setState({
+                        next : this.allProjects.edges[0].node.fields.slug,
+                        previous : this.allProjects.edges[i-1].node.fields.slug
+                    });
+                } else {
+                    this.setState({
+                        next : this.allProjects.edges[i+1].node.fields.slug,
+                        previous : this.allProjects.edges[i-1].node.fields.slug
+                    });
+                }
+            } else {
+                i++;
+            }
+        } 
+        return Promise.resolve('ok');
+        
+    }
+
     render() {
-        console.log(this.next, this.previous);
+        const galleryProps = {
+            autoplay : '',
+            touchDisabled : 'true',
+          }
+
         return (
-            <Layout next={this.next} previous={this.previous}>
+            <div>
+            {this.state.loaded && <Layout state={this.state}>
                 <SideContent title={this.data.title} content= {this.data.content}/>
             
-                {this.state.imagesLoaded && <Gallery data={this.galleryImages} />}
+                <Gallery data={this.galleryImages} galleryProps={galleryProps}/>
 
-            </Layout>
+            </Layout>}
+            </div>
         )
     }
 }

@@ -10,38 +10,51 @@ class Index extends Component {
     this.data = props.data;
     this.galleryImages = [];
 
-
     this.state = { 
-      imagesLoaded : false
+      loaded : false
     }
+
+    this.sortImages = this.sortImages.bind(this);
+    this.pushImages = this.pushImages.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
 
-    this.data.cms.edges.map(project => {
-      let images = project.node.image;
-
-      for (let i = 0; i < images.length; i++) {
-        if (images[i].localFile.extension === "jpg" || images[i].localFile.extension === "png" || images[i].localFile.extension === "jpeg") {
-            this.galleryImages.push(images[i]);
-            break;
-        }
-      }
-    });
+    await this.sortImages();
 
     this.setState({
-      imagesLoaded: true
-    });
+      loaded: true
+     });
+  }
 
+  async sortImages(){
+      Promise.all(this.data.cms.edges.map(project => this.pushImages(project.node.image)));
+  }
+
+  async pushImages(images){
+    for (let i = 0; i < images.length; i++) {
+      if (images[i].localFile.extension === "jpg" || images[i].localFile.extension === "png" || images[i].localFile.extension === "jpeg") {
+          this.galleryImages.push(images[i]);
+          break;
+      }
+    }
+    return Promise.resolve('ok');
   }
 
   render() {
-    return (
-      <Layout>
-        <Menu data={this.data.cms}/>
-        {this.state.imagesLoaded && <Gallery data={this.galleryImages} arrowLeft={this.data.arrowLeft} arrowRight={this.data.arrowRight}/>}
+    const galleryProps = {
+      autoplay : '1000',
+      touchDisabled : 'true',
+    }
 
-      </Layout>
+    return (
+      <div>
+        {this.state.loaded && <Layout>
+          <Menu data={this.data.cms}/>
+          <Gallery data={this.galleryImages} arrowLeft={this.data.arrowLeft} arrowRight={this.data.arrowRight} galleryProps={galleryProps}/>
+
+        </Layout>}
+      </div>
     )
   }
 }

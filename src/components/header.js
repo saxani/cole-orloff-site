@@ -51,24 +51,6 @@ class Header extends Component {
   }
 }
 
-// const Header = ({siteTitle, siteContact}) => {
-//   return (
-//   <header className={`${layoutStyles.height1} ${layoutStyles.width8} ${layoutStyles.flexRow} ${layoutStyles.borderBottom}`}>
-//     <div className={`${layoutStyles.width4} ${layoutStyles.borderRight}`}>
-//       <div className={layoutStyles.contentBox}>
-//         <h1 className= {layoutStyles.title}>
-//           <Link to="/">
-//             {siteTitle}   
-//           </Link>
-//         </h1>
-//       </div>
-//     </div>
-//     <div className={`${layoutStyles.width4} ${layoutStyles.contentBox}`}>
-//       {siteContact}
-//     </div>
-//   </header>
-// )}
-
 Header.propTypes = {
   siteTitle: PropTypes.string,
   siteContact: PropTypes.string

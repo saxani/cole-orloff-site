@@ -16,7 +16,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 
     if(node.internal.type === "StrapiProject"){
-        const slug = node.title.replace(" ", "-").toLowerCase();
+        const slug = "/" + node.title.replace(" ", "-").toLowerCase();
 
         createNodeField({
             node,

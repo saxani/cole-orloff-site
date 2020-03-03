@@ -14,8 +14,9 @@ class Menu extends Component {
    
   
     render() {
+
       return (
-        <div className={`${layoutStyles.width2} ${layoutStyles.height6}`}>
+        <div className={`${layoutStyles.width2} ${layoutStyles.height6} menu`}>
             <ul className={`${menuStyles.menu}`}>
                 {this.data.edges.map(document => (
                   <li key={document.node.id} className={`${menuStyles.oneSixth} ${layoutStyles.borderRight} ${layoutStyles.borderBottom}`}>
