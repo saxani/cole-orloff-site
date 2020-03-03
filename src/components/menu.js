@@ -9,15 +9,25 @@ class Menu extends Component {
       super(props);
 
       this.data = props.data;
+
+      this.handlePrevious = this.handlePrevious.bind(this);
+      this.handleNext = this.handleNext.bind(this);
     }
 
+    handlePrevious(e){
+        console.log('go up');
+    }
+
+    handleNext(e){
+        console.log('go down');
+    }
    
   
     render() {
 
       return (
-        <div className={`${layoutStyles.width2} ${layoutStyles.height6} menu`}>
-            <ul className={`${menuStyles.menu}`}>
+        <div className={`${layoutStyles.width2} ${layoutStyles.height6} ${menuStyles.menuWrapper} menu-wrapper`}>
+            <ul className={`${menuStyles.menu} menu`}>
                 {this.data.edges.map(document => (
                   <li key={document.node.id} className={`${menuStyles.oneSixth} ${layoutStyles.borderRight} ${layoutStyles.borderBottom}`}>
                    <Link to={document.node.fields.slug} className={menuStyles.link}>

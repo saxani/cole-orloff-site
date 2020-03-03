@@ -1,17 +1,12 @@
 //Only styles relating to the menu
 @import './helpers/colors';
 
-.menuWrapper {
-    overflow: hidden;
-}
-
 .menu {
     height: 100%;
-    width: 100%;
     margin-left: 0;
     margin-bottom: 0;
     list-style-type: none;
-    transition: margin-top 0.5s ease-in-out;
+    overflow-y: hidden;
 }
 
 .oneSixth {

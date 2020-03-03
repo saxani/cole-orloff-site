@@ -18,16 +18,18 @@
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-remark-images": "^3.1.44",
     "gatsby-source-filesystem": "^2.1.46",
-    "gatsby-source-strapi": "0.0.10",
+    "gatsby-source-strapi": "https://github.com/strapi/gatsby-source-strapi.git",
     "gatsby-transformer-remark": "^2.6.53",
     "gatsby-transformer-sharp": "^2.3.13",
+    "lodash.debounce": "^4.0.8",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-animated-slider": "^2.0.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-responsive-carousel": "^3.1.51"
+    "react-responsive-carousel": "^3.1.51",
+    "react-scroll-to-component": "^1.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

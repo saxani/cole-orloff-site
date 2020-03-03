@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SideContent from '../components/sideContent';
 import Gallery from '../components/gallery';
+import ProjectFooter from '../components/projectFooter';
 
 
 class Project extends Component {
@@ -34,8 +35,6 @@ class Project extends Component {
         this.setState({
             loaded: true
         });
-
-        
     }
 
     async sortImages(){
@@ -89,6 +88,7 @@ class Project extends Component {
                 <SideContent title={this.data.title} content= {this.data.content}/>
             
                 <Gallery data={this.galleryImages} galleryProps={galleryProps}/>
+                <ProjectFooter next={this.state.next} previous={this.state.previous}/>
 
             </Layout>}
             </div>

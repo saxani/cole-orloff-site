@@ -9,7 +9,6 @@ import '../styles/overrides.scss';
 
 
 function MediaElement(props) {
-    console.log(props);
     if(props.media.localFile.extension === "jpg" || props.media.localFile.extension === "png" || props.media.localFile.extension === "jpeg"){
         return (<Img key={props.media.id} fluid={props.media.localFile.childImageSharp.fluid} className={galleryStyles.galleryImage} alt='A still from the project'/>);
     } else if (props.media.localFile.extension === "mp4") {
@@ -49,8 +48,6 @@ class Gallery extends Component {
         super(props);
         this.galleryProps = props.galleryProps;
         this.data = props.data;
-
-        console.log(props);
     }
   
     render() {

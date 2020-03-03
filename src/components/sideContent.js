@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "gatsby";
 
 import layoutStyles from '../styles/layout.module.scss';
-import menuStyles from '../styles/menu.module.scss';
+import menuStyles from '../styles/sideContent.module.scss';
 
 class SideContent extends Component {
     constructor(props) {
