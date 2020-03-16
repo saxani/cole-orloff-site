@@ -11,19 +11,6 @@ class Layout extends Component {
     this.title = props.data.siteDetails.siteMetadata.title;
     this.contact = props.data.siteDetails.siteMetadata.contact;
     this.children = props.children;
-    // this.next = props.state ? props.state.next : null;
-    // this.previous = props.state ? props.state.previous : null;
-    // this.location = props.state ? props.state.location : null;
-    // this.page = null;
-
-    // this.state = {
-    //   pageRef: null
-    // }
-  }
-
-  componentDidMount() {
-    // this.page = React.createRef();
-    // this.setState({pageRef : this.page });
   }
 
   render() {
@@ -52,5 +39,3 @@ export default props => (
   render={data => <Layout data={data} {...props} />}
   />
 );
-
-// {this.state.pageRef && <Footer next={this.next} previous={this.previous} location={this.location} pageRef={this.page}/>}
