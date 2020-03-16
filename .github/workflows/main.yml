@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Publish Website
+
+# Controls when the action will run. Triggers the workflow on push or pull request 
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-site:
+    name: Build Gatsby Site
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build Gatsby Site
+      uses: jzweifel/gatsby-cli-github-action@master
+      with:
+        gatsby-arg: build
+     
+  FTP-Deploy-Action:
+    needs: build-site
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 2
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      with:
+        ftp-server: home420711130.1and1-data.host
+        ftp-username: u69437580-shaun
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
