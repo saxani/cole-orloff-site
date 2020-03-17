@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Profile from '../components/about/profile';
+import AboutGallery from '../components/about/aboutGallery';
 import BottomMenu from '../components/about/bottomMenu';
 
 class About extends Component {
@@ -14,8 +15,9 @@ class About extends Component {
     
     return (
       <div>
-          <Layout>
+          <Layout about = 'About'>
             <Profile />
+            <AboutGallery />
             <BottomMenu />
           </Layout>
 

@@ -43,3 +43,24 @@
 .content{
     padding: 15px;
 }
+
+//Being made for about menu
+.height100 {
+    height: 100%;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.borderRightNotLast {
+    &:last-child {
+        border-right: none;
+    }
+}
+
+.hoverPointer {
+    &:hover{
+        cursor: pointer;
+    }
+}

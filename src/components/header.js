@@ -9,9 +9,10 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {text: props.siteTitle};
-    this.link = "/about";
-    this.about = "About";
+    this.state = {text: props.title};
+    this.title = props.title;
+    this.hover = props.hover;
+    this.link = props.link;
 
     this.mouseEnter = this.mouseEnter.bind(this);
     this.mouseLeave = this.mouseLeave.bind(this);
@@ -19,13 +20,13 @@ class Header extends Component {
 
   mouseEnter(){
     this.setState({
-      text: this.about
+      text: this.hover
     });
   }
 
   mouseLeave(){
     this.setState({
-      text: this.props.siteTitle
+      text: this.title
     });
   }
 

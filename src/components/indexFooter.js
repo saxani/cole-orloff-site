@@ -29,10 +29,10 @@ class IndexFooter extends Component {
     return (
       <footer className={`${layoutStyles.height1} ${layoutStyles.width8} ${layoutStyles.flexRow}`}>
         <div className={`${layoutStyles.width2} ${footerStyles.buttonWrapper}`}>
-          <a onClick={this.handlePreviousClick} className={`${footerStyles.button} ${layoutStyles.borderRight} ${layoutStyles.width1}`}>
+          <a onClick={this.handleNextClick} className={`${footerStyles.button} ${layoutStyles.borderRight} ${layoutStyles.width1}`}>
             <Img fixed={this.arrowUp.childImageSharp.fixed} alt="Menu arrow up" />
           </a>
-          <a onClick = {this.handleNextClick} className={`${footerStyles.button} ${layoutStyles.borderRight} ${layoutStyles.width1}`}>
+          <a onClick = {this.handlePreviousClick} className={`${footerStyles.button} ${layoutStyles.borderRight} ${layoutStyles.width1}`}>
             <Img fixed={this.arrowDown.childImageSharp.fixed} alt="Menu arrow down" />
           </a>
         </div>

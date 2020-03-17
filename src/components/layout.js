@@ -8,7 +8,18 @@ class Layout extends Component {
   constructor(props) {
     super(props);
 
-    this.title = props.data.siteDetails.siteMetadata.title;
+    if(props.about) {
+      this.title = props.about;
+      this.hover = props.data.siteDetails.siteMetadata.title;
+      this.link = '/';
+
+    } else {
+      this.title = props.data.siteDetails.siteMetadata.title;
+      this.hover = 'About';
+      this.link = '/about';
+    }
+
+    
     this.contact = props.data.siteDetails.siteMetadata.contact;
     this.children = props.children;
   }
@@ -17,7 +28,7 @@ class Layout extends Component {
 
     return (
       <div className={layoutStyles.container} ref={this.page}>
-        <Header siteTitle={this.title} siteContact={this.contact}/>
+        <Header title={this.title} siteContact={this.contact} hover={this.hover} link={this.link}/>
           {this.children}
       </div>
     )
